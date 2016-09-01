@@ -1,0 +1,23 @@
+CatalogBundle\Entity\Image:
+    type: entity
+    table: null
+    repositoryClass: CatalogBundle\Repository\ImageRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        url:
+            type: string
+            length: 255
+            nullable: true
+    manyToOne:
+        product:
+            targetEntity: Product
+            inversedBy: images
+            joinColumn:
+               name: product_id
+               referencedColumnName: id
+    lifecycleCallbacks: {  }

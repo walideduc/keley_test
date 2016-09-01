@@ -1,0 +1,29 @@
+CatalogBundle\Entity\Category:
+    type: entity
+    table: null
+    repositoryClass: CatalogBundle\Repository\CategoryRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: 255
+            unique: true
+        slug:
+            type: string
+            length: 255
+            unique: true
+    oneToMany:
+        products:
+            targetEntity: Product
+            mappedBy: category
+    lifecycleCallbacks:
+        prePersist: [setSlugValue]
+        preUpdate: [setSlugValue]
+
+
+
